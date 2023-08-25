@@ -1,55 +1,50 @@
-# Machine-learning-arduino
-Tentu, berikut adalah tampilan README yang cocok untuk kode yang Anda berikan:
+# Data Preprocessing for Weather Forecasting
 
-```markdown
-# MicroML on Arduino
+This repository demonstrates how to preprocess weather forecast data before using it to train machine learning models. The code provided here focuses on data preprocessing steps such as handling missing values, outlier removal, and feature engineering.
 
-MicroML is a tool that brings machine learning algorithms to microcontrollers, allowing you to deploy machine learning models on devices with limited computational resources.
+## Dataset
 
-This repository demonstrates how to use MicroML to deploy machine learning models on Arduino boards. It provides examples of loading datasets, training classifiers, and generating C/C++ code to port the trained model onto your Arduino.
+The weather forecast data is loaded from a CSV file named "kecamatanforecast-jawa.csv". The dataset includes information about various weather parameters, such as temperature, relative humidity, wind speed, and weather code.
 
-## Supported Classifiers
+## Data Preprocessing Steps
 
-MicroML supports a range of classifiers that can be used for various tasks. Some of the supported classifiers include:
+1. Loading and Filtering Data: The dataset is loaded using pandas, and specific columns related to temperature, relative humidity, wind speed, and weather code are selected for further analysis.
 
-- DecisionTree
-- RandomForest
-- XGBoost
-- Gaussian Naive Bayes
-- Support Vector Machines (SVC and OneClassSVM)
-- Relevant Vector Machines
-- SEFR (Fast Linear-Time Classifier)
-- PCA (Principal Component Analysis)
+2. Handling Missing Values: Any rows with missing values are dropped from the dataset to ensure data quality.
 
-## Installation
+3. Outlier Removal: Outliers are identified using the mean and standard deviation of each feature. Rows containing outliers are removed from the dataset.
 
-To use MicroML, you need to install the `micromlgen` library. You can do this using pip:
+4. Feature Engineering: The "Kode cuaca" column is transformed into a new "Cuaca" column that represents three classes: "Cerah," "Hujan," and "Berawan."
 
-```sh
-pip install micromlgen
-```
+5. Train-Test Split: The preprocessed dataset is split into training and testing sets for model evaluation.
+
+## Model Evaluation
+
+Several machine learning models are evaluated on the preprocessed data:
+
+- Linear Regression
+- Support Vector Machine (SVM)
+- Decision Tree
+- Gradient Boosting
+- Random Forest
+
+The accuracy of each model is measured and compared using bar plots.
 
 ## Getting Started
 
-1. Prepare your dataset by creating CSV files for each class. Place these files in a folder named "dataset".
+1. Download the "kecamatanforecast-jawa.csv" dataset and save it to the appropriate location.
 
-2. Open the Jupyter Notebook in this repository.
+2. Open the provided Jupyter Notebook.
 
-3. Upload your dataset CSV files to the "dataset" folder in the Jupyter Notebook.
+3. Run the notebook cells to perform data preprocessing and model evaluation.
 
-4. Run the notebook cells to load the features, train the machine learning classifier, and generate C/C++ code for your Arduino.
+4. Observe the accuracy comparison among different models using the generated bar plots.
 
-5. Copy the generated C/C++ code to your Arduino sketch to deploy the trained model.
-
-## Example Usage
-
-In the provided Jupyter Notebook, you'll find examples of loading features from CSV files, training a DecisionTree classifier, and generating the corresponding C/C++ code to port the classifier onto an Arduino board.
 
 ## Acknowledgements
 
-MicroML: [https://openbase.com/python/micromlgen](https://openbase.com/python/micromlgen)
+The weather forecast data is used for demonstration purposes only. The preprocessing steps and models evaluated can be customized based on specific requirements.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
